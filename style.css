@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 header,
@@ -88,4 +88,13 @@ form button:hover {
 
 .complete-btn {
     background: rgb(73, 189, 73);
+}
+
+.todo-item {
+    padding: 0rem 0.5rem;
+}
+
+fa-trash,
+fa-check {
+    pointer-events: none;
 }
