@@ -54,6 +54,7 @@ function deleteAndCheck(event) {
     if (item.classList[0] === 'trash-btn') {
         const todo = item.parentElement;
         todo.classList.add("fall");
+        removeLocalTodos(todo);
         todo.addEventListener('transitionend', function() {
             todo.remove();
         })
@@ -149,5 +150,20 @@ function getTodos() {
         //Append to list
         todoList.appendChild(todoDiv);
     })
+
+}
+
+function removeLocalTodos(todo) {
+    //Check = Do I already have thing in there ?
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
 
 }
